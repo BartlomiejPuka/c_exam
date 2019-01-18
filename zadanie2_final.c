@@ -3,12 +3,12 @@
 #define SIZE 10
 
 
-void fill_arr(int arr_x[], int arr_y[]);
-void fill_arr_inv(int arr_x[], int arr_y[]);
-void move_arr(int arr_x[], int arr_y[]);
-void trim_arr(int arr_x[], int arr_y[]);
-void print_arr(int arr_x[], int arr_y[]);
-void fun(int arr_x[], int arr_y[]);
+void fill_arr(int*arr_x, int*arr_y);
+void fill_arr_inv(int*arr_x, int*arr_y);
+void move_arr(int*arr_x, int*arr_y);
+void trim_arr(int*arr_x, int*arr_y);
+void print_arr(int*arr_x, int*arr_y);
+void fun(int*arr_x, int*arr_y);
 int i;
 
 int main() {
@@ -19,30 +19,35 @@ int main() {
     return 0;
 }
 
-void fun(int arr_x[], int arr_y[]){
-    char q;
+void fun(int*arr_x, int*arr_y){
+    char wybor;
     do {
         system("cls");        
         printf("\na) fill_arr\nb) fill_arr_inv\nc) trim_arr\nd) move_arr\ne) print_arr\n");
         printf("WYBIERZ OPCJE:");
-        scanf("\n%c",&q);
-        if(q=='a') {
-            fill_arr(arr_x, arr_y);
-        } else if(q=='b'){
-            fill_arr_inv(arr_x, arr_y);
-        } else if(q=='c'){
-            trim_arr(arr_x, arr_y);
-        } else if(q=='d'){
-            move_arr(arr_x, arr_y);
-        } else if(q=='e'){
-           print_arr(arr_x,arr_y);
-        } else if(q=='q'){
-            EXIT_SUCCESS;
-        }
+        scanf(" %c",&wybor);
+        switch(wybor){
+            case 'a':
+                fill_arr(arr_x,arr_y);
+                break;
+            case 'b':
+                fill_arr_inv(arr_x,arr_y);
+                break;
+            case 'c':
+                trim_arr(arr_x,arr_y);
+                break;
+            case 'd':
+                move_arr(arr_x,arr_y);
+                break;
+            case 'e':
+                print_arr(arr_x,arr_y);
+                break;
+            case 'q':
+                EXIT_SUCCESS;}
         system("pause");
-    } while(q!='q');
+    } while(wybor!='q');
 }
-void fill_arr(int arr_x[], int arr_y[]){
+void fill_arr(int*arr_x, int*arr_y){
     int i;
     for(i=0;i<SIZE;i++){
         arr_y[i] = arr_x[i];
@@ -50,7 +55,7 @@ void fill_arr(int arr_x[], int arr_y[]){
     }
 }
 
-void fill_arr_inv(int arr_x[], int arr_y[]){
+void fill_arr_inv(int*arr_x, int*arr_y){
     int i;
     int j = 0;
     for(i=SIZE-1;i>=0;i--){
@@ -61,7 +66,7 @@ void fill_arr_inv(int arr_x[], int arr_y[]){
 
 }
 
-void move_arr(int arr_x[], int arr_y[]){
+void move_arr(int*arr_x, int*arr_y){
     int i, temp, j;
     int n;
     int decyzja = 0;
@@ -92,7 +97,7 @@ void move_arr(int arr_x[], int arr_y[]){
     }}
 }
 
-void print_arr(int arr_x[], int arr_y[]){
+void print_arr(int*arr_x, int*arr_y){
     int i;
     printf("Pierwsza tablica:\n");
     for(i=0;i<SIZE;i++){
@@ -104,7 +109,7 @@ void print_arr(int arr_x[], int arr_y[]){
     }
 }
 
-void trim_arr(int arr_x[], int arr_y[]){
+void trim_arr(int*arr_x, int*arr_y){
     int i, temp, j;
     int n;
     int decyzja = 0;
